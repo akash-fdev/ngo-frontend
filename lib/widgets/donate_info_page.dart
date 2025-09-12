@@ -16,7 +16,7 @@ class DonateInfoPage extends StatelessWidget {
           ),
         ),
         backgroundColor: Colors.white,
-        elevation: 0,
+        elevation: 0, 
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),

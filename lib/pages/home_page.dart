@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:foundation_app/widgets/announcement_section.dart';
-import '../widgets/top_marquee.dart';
+import '../widgets/contact_section.dart';
 import '../widgets/nav_bar.dart';
+import '../widgets/top_marquee.dart';
 import '../widgets/hero_section.dart';
 import '../widgets/about_section.dart';
+import '../widgets/announcement_section.dart';
 import '../widgets/workshop_section.dart';
 import '../widgets/gallery_section.dart';
-import '../widgets/contact_section.dart';
 import '../widgets/donate_info_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -19,7 +19,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final ScrollController _scrollController = ScrollController();
 
-  // 🔹 Sections ke liye keys
   final heroKey = GlobalKey();
   final aboutKey = GlobalKey();
   final announcementKey = GlobalKey();
@@ -27,7 +26,7 @@ class _HomePageState extends State<HomePage> {
   final galleryKey = GlobalKey();
   final contactKey = GlobalKey();
 
-  String _activeSection = "मुख्य पृष्ठ"; // default active
+  String _activeSection = "मुख्य पृष्ठ";
 
   void scrollToSection(String section) {
     setState(() {
@@ -59,7 +58,7 @@ class _HomePageState extends State<HomePage> {
           context,
           MaterialPageRoute(builder: (context) => const DonateInfoPage()),
         );
-        return; // iske baad scroll nahi chalega
+        return;
     }
 
     if (targetContext != null) {
@@ -122,8 +121,6 @@ class _HomePageState extends State<HomePage> {
         controller: _scrollController,
         slivers: [
           const SliverToBoxAdapter(child: TopMarquee()),
-
-          // 🔹 NavBar fixed on top
           SliverAppBar(
             pinned: true,
             backgroundColor: Colors.white,
@@ -133,8 +130,6 @@ class _HomePageState extends State<HomePage> {
               onNavTap: scrollToSection,
             ),
           ),
-
-          // 🔹 All Sections (DonateSection hata diya)
           SliverToBoxAdapter(
             key: heroKey,
             child: HeroSection(
