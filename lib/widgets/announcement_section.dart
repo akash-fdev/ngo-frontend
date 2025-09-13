@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:open_filex/open_filex.dart';
-import 'dart:io';
 
 class AnnouncementSection extends StatelessWidget {
   const AnnouncementSection({super.key});
@@ -10,11 +9,15 @@ class AnnouncementSection extends StatelessWidget {
   Future<void> _downloadPDF(BuildContext context) async {
     try {
       final dio = Dio();
+
+      // 🔹 Yahan apna local ya hosted PDF URL daalna
       const url = "https://www.africau.edu/images/default/sample.pdf";
 
+      // 🔹 Storage location
       final dir = await getApplicationDocumentsDirectory();
       final filePath = "${dir.path}/admission_form.pdf";
 
+      // 🔹 Download
       await dio.download(
         url,
         filePath,
@@ -26,7 +29,7 @@ class AnnouncementSection extends StatelessWidget {
         },
       );
 
-      // 🔹 yahan context use karne se pehle mounted check
+      // 🔹 File open
       if (context.mounted) {
         await OpenFilex.open(filePath);
         ScaffoldMessenger.of(context).showSnackBar(
@@ -71,7 +74,7 @@ class AnnouncementSection extends StatelessWidget {
                 border: Border.all(color: Colors.orange),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black12.withValues(alpha: 0.2),
+                    color: Colors.black12.withOpacity(0.2),
                     blurRadius: 12,
                     offset: const Offset(2, 6),
                   ),
@@ -83,8 +86,11 @@ class AnnouncementSection extends StatelessWidget {
                   CircleAvatar(
                     radius: 35,
                     backgroundColor: Colors.orange.shade100,
-                    child: const Icon(Icons.campaign,
-                        color: Colors.orange, size: 35),
+                    child: const Icon(
+                      Icons.campaign,
+                      color: Colors.orange,
+                      size: 35,
+                    ),
                   ),
                   const SizedBox(height: 20),
                   const Text(

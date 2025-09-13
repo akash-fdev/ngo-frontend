@@ -34,8 +34,9 @@ dependencies:
   marquee: ^2.2.3  
   url_launcher: ^6.3.0
   dio: ^5.7.0
-  path_provider: ^2.1.4
-  open_filex: ^4.5.0
+  path_provider: ^2.1.5
+  open_filex: ^4.4.0
+  
   carousel_slider: ^5.0.0
   font_awesome_flutter: ^10.7.0
   flutter_widget_from_html: ^0.14.6
@@ -84,6 +85,7 @@ flutter:
     - assets/ramayan.png
     - assets/स्वराज्य प्रकाश.jpg
     - assets/शान्ति देवी.jpg
+    - assets/rama_devi.jpg
     - assets/form.pdf 
     - assets/workshop/srimad.jpg
     - assets/workshop/ramayan.jpg
